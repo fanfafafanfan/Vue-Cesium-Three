@@ -1,13 +1,43 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import mainMenu from "../views/mainMenu.vue";
+import CesiumAndThree from "../views/projectManagement/CesiumAndThree.vue";
+import projectManagement from "../views/projectManagement/projectManagement.vue";
+import modelsManagement from "../views/modelsManagement/modelsManagement.vue";
+import projectDetail from "../views/projectDetail.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "cAt",
-    component: () => import("../views/CesiumAndThree.vue")
+    redirect: {
+      name: "projectManagement"
+    },
+    component: mainMenu,
+    children: [
+      {
+        path: "/projectManagement",
+        name: "projectManagement",
+        component: projectManagement
+      },
+      {
+        path: "/modelsManagement",
+        name: "modelsManagement",
+        component: modelsManagement
+      }
+    ]
+  },
+  {
+    path: "/projectDetail",
+    name: "projectDetail",
+    component: projectDetail
+  },
+  {
+    path: "/CesiumAndThree",
+    name: "CesiumAndThree",
+    component: CesiumAndThree
   },
   {
     path: "/three",
@@ -22,6 +52,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes
 });
 
