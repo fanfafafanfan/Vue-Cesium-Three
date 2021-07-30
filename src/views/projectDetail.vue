@@ -35,13 +35,15 @@
 
 <script>
 import CesiumAndThree from "../views/projectManagement/CesiumAndThree.vue";
+import { areaOrgFind } from "@/api/api";
 export default {
   components: {
     CesiumAndThree
   },
   data() {
     return {
-      activeIndex: this.$route.path
+      activeIndex: this.$route.path,
+      id: 1
     };
   },
   watch: {
@@ -50,9 +52,21 @@ export default {
       this.activeIndex = to.path;
     }
   },
+  mounted() {
+    this.areaOrgFinds();
+  },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    async areaOrgFinds() {
+      areaOrgFind(this.id)
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };
