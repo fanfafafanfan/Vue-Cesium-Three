@@ -14,7 +14,12 @@
       >
         <el-menu-item index="/projectManagement">项目管理</el-menu-item>
         <el-menu-item index="/modelsManagement">模型管理</el-menu-item>
-        <el-menu-item index="3"
+        <el-submenu index="2">
+          <template slot="title">xeokit-sdk</template>
+          <el-menu-item index="/loadingObjCar">Obj-Car</el-menu-item>
+          <el-menu-item index="/BIMOffline_XKT_Duplex">Xkt-BIM</el-menu-item>
+        </el-submenu>
+        <el-menu-item
           ><a
             href="http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earthui-fromJSON.html"
             target="_blank"
@@ -50,7 +55,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .title {
   background-color: #545c64;
   color: #fff;

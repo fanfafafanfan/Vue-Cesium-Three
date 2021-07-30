@@ -203,14 +203,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .filterContainer {
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
 }
 .i-style {
-  font-size: 18px;
-  color: #409eff;
+  font-size: 22px;
+  color: #67c23a;
 }
 </style>

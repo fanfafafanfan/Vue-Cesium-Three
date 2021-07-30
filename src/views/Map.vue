@@ -42,7 +42,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #cesiumContainer {
   width: 100vw;
   height: 100vh;

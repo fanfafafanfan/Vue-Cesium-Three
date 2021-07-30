@@ -1,12 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import mainMenu from "../views/mainMenu.vue";
-import CesiumAndThree from "../views/projectManagement/CesiumAndThree.vue";
-import projectManagement from "../views/projectManagement/projectManagement.vue";
-import modelsManagement from "../views/modelsManagement/modelsManagement.vue";
-import projectDetail from "../views/projectDetail.vue";
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -15,29 +9,41 @@ const routes = [
     redirect: {
       name: "projectManagement"
     },
-    component: mainMenu,
+    component: () => import("../views/mainMenu.vue"),
     children: [
       {
         path: "/projectManagement",
         name: "projectManagement",
-        component: projectManagement
+        component: () =>
+          import("../views/projectManagement/projectManagement.vue")
       },
       {
         path: "/modelsManagement",
         name: "modelsManagement",
-        component: modelsManagement
+        component: () =>
+          import("../views/modelsManagement/modelsManagement.vue")
+      },
+      {
+        path: "/loadingObjCar",
+        name: "loadingObjCar",
+        component: () => import("../views/xeokitDemo/loadingObjCar.vue")
+      },
+      {
+        path: "/BIMOffline_XKT_Duplex",
+        name: "BIMOffline_XKT_Duplex",
+        component: () => import("../views/xeokitDemo/BIMOffline_XKT_Duplex.vue")
       }
     ]
   },
   {
     path: "/projectDetail",
     name: "projectDetail",
-    component: projectDetail
+    component: () => import("../views/projectDetail.vue")
   },
   {
     path: "/CesiumAndThree",
     name: "CesiumAndThree",
-    component: CesiumAndThree
+    component: () => import("../views/projectManagement/CesiumAndThree.vue")
   },
   {
     path: "/three",
@@ -52,7 +58,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history",
   routes
 });
 

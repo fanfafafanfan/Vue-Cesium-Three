@@ -10,8 +10,8 @@
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import * as Cesium from "cesium";
 import * as THREE from "three";
-// import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
-// import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 export default {
@@ -105,14 +105,14 @@ export default {
 
       let center = Cesium.Cartesian3.fromDegrees(
         (minWGS84[0] + maxWGS84[0]) / 2,
-        (minWGS84[1] + maxWGS84[1]) / 2 - 0.015,
+        (minWGS84[1] + maxWGS84[1]) / 2 - 0.04,
         3000
       );
       cesium.viewer.camera.flyTo({
         destination: center, //经度、纬度、高度
         orientation: {
           heading: Cesium.Math.toRadians(0),
-          pitch: Cesium.Math.toRadians(-60),
+          pitch: Cesium.Math.toRadians(-40),
           roll: Cesium.Math.toRadians(0)
         },
         duration: 8
@@ -166,29 +166,110 @@ export default {
     }
     // 添加three图形
     function init3DObject() {
-      // 添加一个立方体
-      let doubleSideMaterial = new THREE.MeshNormalMaterial({
-        side: THREE.DoubleSide
+      // // 添加一个立方体
+      // let doubleSideMaterial = new THREE.MeshNormalMaterial({
+      //   side: THREE.DoubleSide
+      // });
+      // let geometry = new THREE.BoxGeometry(1, 2, 4);
+      // let sphere = new THREE.Mesh(geometry, doubleSideMaterial);
+      // const scaleSize = 50;
+      // sphere.scale.set(scaleSize, scaleSize, scaleSize); // 放大物体，不然可能在地球表面看不见
+
+      // var sphereYup = new THREE.Group();
+
+      // let axesHelper = new THREE.AxesHelper(3000000000000);
+      // sphereYup.add(axesHelper);
+
+      // sphereYup.add(sphere);
+      // objects.push(sphere);
+
+      // three.scene.add(sphereYup); // don’t forget to add it to the Three.js scene manually
+      // const _3DOB = new _3DObject();
+      // _3DOB.threeMesh = sphereYup;
+      // _3DOB.minWGS84 = minWGS84;
+      // _3DOB.maxWGS84 = maxWGS84;
+      // _3Dobjects.push(_3DOB);
+
+      // 加载一个obj文件及mtl，展示杆塔
+      const towerLoader = new MTLLoader().setPath("models/tower/");
+      towerLoader.load("tower.mtl", function(materials) {
+        console.log(materials, "-----tower");
+        materials.preload();
+        const loaderOBJ = new OBJLoader().setPath("models/tower/");
+        loaderOBJ.setMaterials(materials);
+        loaderOBJ.load(
+          "tower.obj",
+          function(obj) {
+            const scaleSize = 10;
+            obj.scale.set(scaleSize, scaleSize, scaleSize);
+            obj.rotation.x = Math.PI / 2;
+            obj.rotation.y = Math.PI;
+
+            const meshYup = new THREE.Group();
+            meshYup.add(obj);
+            objects.push(obj);
+
+            three.scene.add(meshYup); // don’t forget to add it to the Three.js scene manually
+            // Assign Three.js object mesh to our object array
+            const _3DOB = new _3DObject();
+            _3DOB.threeMesh = meshYup;
+            _3DOB.minWGS84 = minWGS84;
+            _3DOB.maxWGS84 = maxWGS84;
+            _3Dobjects.push(_3DOB);
+          },
+          function(xhr) {
+            if (xhr.lengthComputable) {
+              var percentComplete = (xhr.loaded / xhr.total) * 100;
+              console.log(
+                Math.round(percentComplete, 2) + "% tower---downloaded"
+              );
+            }
+          },
+          function(xhr) {
+            console.error(xhr, "onError");
+          }
+        );
       });
-      let geometry = new THREE.BoxGeometry(1, 2, 4);
-      let sphere = new THREE.Mesh(geometry, doubleSideMaterial);
-      const scaleSize = 50;
-      sphere.scale.set(scaleSize, scaleSize, scaleSize); // 放大物体，不然可能在地球表面看不见
+      // 加载一个obj文件及mtl，展示路
+      const roadLoader = new MTLLoader().setPath("models/roadV2/");
+      roadLoader.load("roadV2.mtl", function(materials) {
+        console.log(materials, "-----roadV2");
+        materials.preload();
+        const loaderOBJ = new OBJLoader().setPath("models/roadV2/");
+        loaderOBJ.setMaterials(materials);
+        loaderOBJ.load(
+          "roadV2.obj",
+          function(obj) {
+            const scaleSize = 10;
+            obj.scale.set(scaleSize, scaleSize, scaleSize);
+            obj.rotation.x = Math.PI / 2;
+            obj.rotation.y = Math.PI;
 
-      var sphereYup = new THREE.Group();
+            const meshYup1 = new THREE.Group();
+            meshYup1.add(obj);
+            objects.push(obj);
 
-      let axesHelper = new THREE.AxesHelper(3000000000000);
-      sphereYup.add(axesHelper);
-
-      sphereYup.add(sphere);
-      objects.push(sphere);
-
-      three.scene.add(sphereYup); // don’t forget to add it to the Three.js scene manually
-      const _3DOB = new _3DObject();
-      _3DOB.threeMesh = sphereYup;
-      _3DOB.minWGS84 = minWGS84;
-      _3DOB.maxWGS84 = maxWGS84;
-      _3Dobjects.push(_3DOB);
+            three.scene.add(meshYup1); // don’t forget to add it to the Three.js scene manually
+            // Assign Three.js object mesh to our object array
+            const _3DOB = new _3DObject();
+            _3DOB.threeMesh = meshYup1;
+            _3DOB.minWGS84 = minWGS84;
+            _3DOB.maxWGS84 = maxWGS84;
+            _3Dobjects.push(_3DOB);
+          },
+          function(xhr) {
+            if (xhr.lengthComputable) {
+              var percentComplete = (xhr.loaded / xhr.total) * 100;
+              console.log(
+                Math.round(percentComplete, 2) + "% roadV2---downloaded"
+              );
+            }
+          },
+          function(xhr) {
+            console.error(xhr, "onError");
+          }
+        );
+      });
 
       // // 加载一个FBX静态文件，展示
       // const loader = new FBXLoader();
@@ -495,7 +576,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .mainView {
   width: 100%;
   height: 100%;

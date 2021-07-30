@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #project-detail > .el-header {
   // line-height: 60px;
   padding: 0;

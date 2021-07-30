@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #container {
   position: absolute;
   width: 100%;
