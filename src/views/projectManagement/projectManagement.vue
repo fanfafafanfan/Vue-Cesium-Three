@@ -32,6 +32,14 @@
           <el-button @click="handleProjectClick(scope.row)" type="text">
             {{ scope.row.projectName }}
           </el-button>
+          <!-- <router-link
+            :to="'/projectManagement/projectDetail/' + scope.row.id"
+            class="link-type"
+          >
+            <el-button type="text">
+              {{ scope.row.projectName }}
+            </el-button>
+          </router-link> -->
         </template>
       </el-table-column>
       <el-table-column prop="imageData" label="影像数据" align="center">
@@ -96,36 +104,22 @@
 
 <script>
 export default {
-  methods: {
-    handleClick(row) {
-      console.log(row);
-    },
-    handleProjectClick(row) {
-      console.log(row);
-      let routeUrl = this.$router.resolve({
-        path: "/projectDetail",
-        query: { id: 78 }
-      });
-      window.open(routeUrl.href, "_blank");
-    },
-    newProject() {},
-    deleteProject() {}
-  },
-
   data() {
     return {
       inputName: "",
       tableData: [
         {
+          id: 1,
           projectName: "线路1",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
           thematicData: false,
-          documentation: "https://element.eleme.cn/#/zh-CN/component/icon",
+          documentation: "",
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 2,
           projectName: "线路2",
           imageData: true,
           elevationData: true,
@@ -135,6 +129,7 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 3,
           projectName: "线路3",
           imageData: true,
           elevationData: true,
@@ -144,6 +139,7 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 4,
           projectName: "线路4",
           imageData: true,
           elevationData: true,
@@ -153,6 +149,7 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 5,
           projectName: "线路5",
           imageData: true,
           elevationData: true,
@@ -162,15 +159,17 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 6,
           projectName: "线路6",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
           thematicData: true,
-          documentation: "https://element.eleme.cn/#/zh-CN/component/icon",
+          documentation: "",
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 7,
           projectName: "线路7",
           imageData: true,
           elevationData: true,
@@ -180,6 +179,7 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 8,
           projectName: "线路8",
           imageData: true,
           elevationData: true,
@@ -189,6 +189,7 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
+          id: 9,
           projectName: "线路9",
           imageData: true,
           elevationData: true,
@@ -199,6 +200,44 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.getLoginInfo();
+  },
+  methods: {
+    async getLoginInfo() {
+      this.$api.user
+        .getLoginInfoAPI({
+          username: "admin",
+          password: "123456",
+          verifyToken: "",
+          code: ""
+        })
+        .then(function(response) {
+          console.log(response, "-------response");
+        })
+        .catch(function(error) {
+          console.log(error, "-------error");
+        });
+    },
+    handleClick(row) {
+      console.log(row);
+    },
+    handleProjectClick(row) {
+      console.log(row);
+
+      // 当前页面打开
+      // this.$router.push({ path: "/projectDetail/" + row.id });
+
+      // 新页面打开
+      let routeUrl = this.$router.resolve({
+        path: "/projectDetail",
+        query: { sid: "05a50fa4-0eab-43df-acbc-bdc142aef623" }
+      });
+      window.open(routeUrl.href, "_blank");
+    },
+    newProject() {},
+    deleteProject() {}
   }
 };
 </script>

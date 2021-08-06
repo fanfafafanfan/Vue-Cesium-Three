@@ -2,10 +2,18 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import "./plugins/element.js";
-import axios from "axios";
+import Element from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 
-Vue.prototype.$ajax = axios;
+// import axios from "axios";
+import api from "./api/index";
+
+import "tailwindcss/tailwind.css";
+
+// Vue.prototype.$ajax = axios;
+Vue.prototype.$api = api;
+
+Vue.use(Element);
 
 Vue.config.productionTip = false;
 

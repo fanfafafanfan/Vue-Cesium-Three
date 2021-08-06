@@ -3,7 +3,7 @@
     <el-header>
       <div class="title">输电线路三维全过程机械化施工策划平台</div>
       <el-menu
-        :default-active="activeIndex"
+        :default-active="activeMenu"
         class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect"
@@ -37,14 +37,17 @@
 <script>
 export default {
   data() {
-    return {
-      activeIndex: this.$route.path
-    };
+    return {};
   },
-  watch: {
-    $route(to) {
-      // 监听路由的变化  如果路由发生改变则当前tab栏默认值也相应改变
-      this.activeIndex = to.path;
+  computed: {
+    activeMenu() {
+      const route = this.$route;
+      const { meta, path } = route;
+      // if set path, the sidebar will highlight the path you set
+      if (meta.activeMenu) {
+        return meta.activeMenu;
+      }
+      return path;
     }
   },
   methods: {
@@ -78,7 +81,7 @@ export default {
 #project-menu .main {
   background-color: #f3f3f3;
   width: 100%;
-  height: calc(100% - 61px);
+  height: calc(100% - 60px);
   position: absolute;
 }
 </style>

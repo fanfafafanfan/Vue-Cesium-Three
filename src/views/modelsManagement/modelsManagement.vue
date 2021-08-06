@@ -1,77 +1,126 @@
 <template>
-  <div>
-    <div id="container"></div>
+  <div id="modelsManagement">
+    <!-- <load-box-model></load-box-model> -->
+    <load-fbx-model :modelPath="path"></load-fbx-model>
+    <div
+      class="w-2/12 h-4/5 fixed top-40 bg-gray-700 bg-opacity-50 overflow-auto"
+    >
+      <el-tree
+        :data="data"
+        :props="defaultProps"
+        default-expand-all
+        @node-click="handleNodeClick"
+      ></el-tree>
+    </div>
   </div>
 </template>
 
 <script>
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import loadBoxModel from "./loadModels/loadBoxModel.vue";
+import loadFbxModel from "./loadModels/loadFbxModel.vue";
 export default {
+  components: {
+    // loadBoxModel,
+    loadFbxModel
+  },
   data() {
     return {
-      camera: null,
-      scene: null,
-      renderer: null,
-      mesh: null,
-      controls: null
+      data: [
+        {
+          label: "物料运输机械",
+          children: [
+            {
+              label: "货运架空索道",
+              children: [
+                {
+                  label: "货运支架",
+                  path: "huoyunzhijia.FBX"
+                },
+                {
+                  label: "liaodou",
+                  path: "liaodou.FBX"
+                }
+              ]
+            },
+            {
+              label: "直升机物料吊运工具",
+              children: [
+                {
+                  label: "起重吊装带",
+                  path: "qizhongdiaozhaungdai.FBX"
+                }
+              ]
+            },
+            {
+              label: "履带式运输车",
+              children: [
+                {
+                  label: "WLD-10",
+                  path: "lvdaishiyunshuche-WLD-10.FBX"
+                }
+              ]
+            },
+            // {
+            //   label: "轻型卡车",
+            //   children: [
+            //     {
+            //       label: "WQK-34",
+            //       path: "qingxingkache-WQK-34.FBX"
+            //     }
+            //   ]
+            // },
+            {
+              label: "轮胎式运输车",
+              children: [
+                {
+                  label: "WLT-15",
+                  path: "luntaishiyunshuche-WLT-15.FBX"
+                }
+              ]
+            },
+            {
+              label: "水陆两用运输装备",
+              children: [
+                {
+                  label: "WSL-CA-7",
+                  path: "shuiluliangyongchuan-WSL-CA-7.FBX"
+                }
+              ]
+            },
+            {
+              label: "沼泽钢轮车",
+              children: [
+                {
+                  label: "WGL-5",
+                  path: "zhaozeganglunche-WGL-5.FBX"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      defaultProps: {
+        children: "children",
+        label: "label"
+      },
+      path: ""
     };
   },
-  mounted() {
-    this.init();
-    this.animate();
+  created() {
+    this.path = "models/fbx/lvdaishiyunshuche-WLD-10.FBX";
   },
   methods: {
-    //初始化
-    init: function() {
-      //  创建场景对象Scene
-      this.scene = new THREE.Scene();
-
-      //网格模型添加到场景中
-      let geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-      let material = new THREE.MeshNormalMaterial({
-        color: "white"
-      });
-      this.mesh = new THREE.Mesh(geometry, material);
-      this.scene.add(this.mesh);
-
-      /**
-       * 相机设置
-       */
-      let container = document.getElementById("container");
-      this.camera = new THREE.PerspectiveCamera(
-        70,
-        container.clientWidth / container.clientHeight,
-        0.01,
-        10
-      );
-      this.camera.position.z = 1;
-
-      /**
-       * 创建渲染器对象
-       */
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(this.renderer.domElement);
-
-      //创建控件对象
-      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    },
-
-    // 动画
-    animate: function() {
-      requestAnimationFrame(this.animate);
-      this.mesh.rotation.x += 0.01;
-      this.mesh.rotation.y += 0.02;
-      this.renderer.render(this.scene, this.camera);
+    handleNodeClick(data) {
+      console.log(data);
+      this.path = `models/fbx/${data.path}`;
     }
   }
 };
 </script>
 
 <style lang="scss">
-#container {
-  position: absolute;
+#modelsManagement {
+  position: relative;
   width: 100%;
   height: 100%;
 }

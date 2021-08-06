@@ -2,10 +2,24 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
+const path = require("path");
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+
 module.exports = {
+  chainWebpack: config => {
+    //设置别名
+    config.resolve.alias.set("@", resolve("src"));
+  },
   publicPath:
     process.env.NODE_ENV === "production" ? "/\n" + "vue-cesium-example/" : "/",
   configureWebpack: {
+    // resolve: {
+    //   alias: {
+    //     "@": resolve("src")
+    //   }
+    // },
     plugins: [
       // Copy Cesium Assets, Widgets, and Workers to a static directory
       new CopyWebpackPlugin({
@@ -40,6 +54,13 @@ module.exports = {
       unknownContextRegExp: /\/cesium\/cesium\/Source\/Core\/buildModuleUrl\.js/
     }
   },
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [require("tailwindcss"), require("autoprefixer")]
+      }
+    }
+  },
   //devServer.proxy适用于本地开发使用，
   //生成环境请用第三方代理软件，如nginx。
   devServer: {
@@ -55,6 +76,14 @@ module.exports = {
         pathRewrite: {
           "^/models": ""
         }
+      },
+      "/api": {
+        //目标服务器,代理访问到http://localhost:8888
+        target: "http://10.1.6.72:8888",
+        changOrigin: true //开启代理
+        // pathRewrite: {
+        //   "^/models": ""
+        // }
       }
     }
   }

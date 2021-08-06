@@ -587,7 +587,6 @@ body {
   margin: 0;
   overflow: hidden;
   padding: 0;
-  background: #000;
 }
 
 #cesiumContainer {
