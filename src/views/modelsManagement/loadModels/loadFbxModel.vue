@@ -43,7 +43,23 @@ export default {
       path: this.modelPath
     };
   },
+  mounted() {
+    console.log(this.modelPath, "this.modelPath");
+    this.init();
+    this.animate();
+    window.addEventListener("resize", this.onWindowResize, false);
+  },
   methods: {
+    onWindowResize() {
+      let container = document.getElementById("fbxContainer");
+      console.log(container.offsetWidth, "container", container.offsetHeight);
+      // 改变相机的 aspect 为窗口的宽和长度之比
+      this.camera.aspect = container.offsetWidth / container.offsetHeight;
+      // 更新相机的投影矩阵
+      this.camera.updateProjectionMatrix();
+      // 重新设置渲染器的大小
+      this.renderer.setSize(container.offsetWidth, container.offsetHeight);
+    },
     init() {
       let self = this;
 
@@ -54,7 +70,7 @@ export default {
         0.01,
         100000
       );
-      self.camera.position.set(100, 200, 1500);
+      self.camera.position.set(600, 1000, 1500);
       self.scene = new THREE.Scene();
       // ground
       var mesh = new THREE.Mesh(
@@ -141,17 +157,12 @@ export default {
       if (mixer) mixer.update(delta);
     }
   },
-  mounted() {
-    console.log(this.modelPath, "this.modelPath");
-    this.init();
-    this.animate();
-  },
   beforeDestroy() {
     this.renderer.dispose();
-
     if (this.controls) {
       this.controls.dispose();
     }
+    window.removeEventListener("resize", this.onResize, false);
   }
 };
 </script>

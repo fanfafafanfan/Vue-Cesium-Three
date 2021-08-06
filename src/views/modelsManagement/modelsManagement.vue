@@ -112,7 +112,9 @@ export default {
   methods: {
     handleNodeClick(data) {
       console.log(data);
-      this.path = `models/fbx/${data.path}`;
+      if (data.path) {
+        this.path = `models/fbx/${data.path}`;
+      }
     }
   }
 };
