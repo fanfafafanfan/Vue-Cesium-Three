@@ -24,14 +24,14 @@ export default {
     };
   },
   mounted() {
-    this.loadBIM();
+    this.load();
   },
   destroyed() {
     this.model.destroy();
     this.navCube.destroy();
   },
   methods: {
-    loadBIM() {
+    load() {
       //------------------------------------------------------------------------------------------------------------------
       // Create a Viewer, arrange the camera, tweak x-ray and highlight materials
       //------------------------------------------------------------------------------------------------------------------

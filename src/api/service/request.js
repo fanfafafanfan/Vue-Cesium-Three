@@ -3,7 +3,7 @@ import qs from "qs";
 import { Message, Loading } from "element-ui";
 const service = axios.create({
   // baseURL: "/api",
-  timeout: 5000, // 响应时间
+  timeout: 500, // 响应时间 5000
   withCredentials: true, // 配置cookie
   // 配置请求头
   headers: {

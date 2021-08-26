@@ -109,8 +109,8 @@ export default {
       inputName: "",
       tableData: [
         {
-          id: 1,
-          projectName: "线路1",
+          id: "93a4c9d5-3785-4aa5-8b79-2d9ca0aedceb",
+          projectName: "线路工程1",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
@@ -119,8 +119,8 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
-          id: 2,
-          projectName: "线路2",
+          id: "7c99cff4-c632-4c7c-8d59-44457f212e60",
+          projectName: "变电工程",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
@@ -129,8 +129,8 @@ export default {
           createTime: "2021-7-26 15:10"
         },
         {
-          id: 3,
-          projectName: "线路3",
+          id: "1f3188e7-f2ba-4bee-80ff-cbfa4ef1ae12",
+          projectName: "500kV南章Ⅰ线",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
@@ -232,7 +232,7 @@ export default {
       // 新页面打开
       let routeUrl = this.$router.resolve({
         path: "/projectDetail",
-        query: { sid: "05a50fa4-0eab-43df-acbc-bdc142aef623" }
+        query: { sid: row.id }
       });
       window.open(routeUrl.href, "_blank");
     },

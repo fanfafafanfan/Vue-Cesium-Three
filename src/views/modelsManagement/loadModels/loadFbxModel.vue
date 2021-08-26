@@ -2,7 +2,7 @@
   <div
     id="fbxContainer"
     v-loading="loading"
-    element-loading-text="拼命加载中"
+    :element-loading-text="loadingText"
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   ></div>
@@ -40,7 +40,8 @@ export default {
       scene: null,
       renderer: null,
       controls: null,
-      path: this.modelPath
+      path: this.modelPath,
+      loadingText: "拼命加载中"
     };
   },
   mounted() {
@@ -141,7 +142,9 @@ export default {
         if (Math.round(percentComplete, 2) == 100) {
           this.loading = false;
         }
-        console.log(Math.round(percentComplete, 2) + "% model---downloaded");
+        var text = "加载中..." + Math.round(percentComplete, 2) + "%";
+        this.loadingText = text;
+        console.log(text);
       }
     },
     //错误回调

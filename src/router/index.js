@@ -43,6 +43,19 @@ const routes = [
         path: "/BIMOffline_XKT_Duplex",
         name: "BIMOffline_XKT_Duplex",
         component: () => import("../views/xeokitDemo/BIMOffline_XKT_Duplex.vue")
+      },
+      // xeokit-sdk 加载 点云模型
+      {
+        path: "/loading_XKT_MAP_pointCloud",
+        name: "loading_XKT_MAP_pointCloud",
+        component: () =>
+          import("../views/xeokitDemo/loading_XKT_MAP_pointCloud.vue")
+      },
+      // d3preview示例
+      {
+        path: "/d3previewIndex",
+        name: "d3previewIndex",
+        component: () => import("../views/d3previewDemo/d3previewIndex.vue")
       }
     ]
   },
@@ -65,7 +78,7 @@ const routes = [
     name: "three",
     component: () => import("../views/Three.vue")
   },
-  // cesiumJS 地球-天地图 demo
+  // cesiumJS 地球 demo
   {
     path: "/map",
     name: "map",

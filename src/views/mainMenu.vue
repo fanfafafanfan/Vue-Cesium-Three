@@ -17,15 +17,21 @@
         <el-submenu index="2">
           <template slot="title">xeokit-sdk</template>
           <el-menu-item index="/loadingObjCar">Obj-Car</el-menu-item>
-          <el-menu-item index="/BIMOffline_XKT_Duplex">Xkt-BIM</el-menu-item>
+          <el-menu-item index="/BIMOffline_XKT_Duplex"
+            >BIMOffline_XKT_Duplex</el-menu-item
+          >
+          <el-menu-item index="/loading_XKT_MAP_pointCloud"
+            >XKT_MAP_pointCloud</el-menu-item
+          >
         </el-submenu>
-        <el-menu-item
-          ><a
+        <el-menu-item>
+          <a
             href="http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earthui-fromJSON.html"
             target="_blank"
-            >CesiumLab</a
-          ></el-menu-item
-        >
+            >CesiumLab
+          </a>
+        </el-menu-item>
+        <el-menu-item index="/d3previewIndex">d3preview示例</el-menu-item>
       </el-menu>
     </el-header>
     <div class="main">

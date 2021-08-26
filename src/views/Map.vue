@@ -18,7 +18,8 @@ export default {
       let imageryLayers = viewer.imageryLayers;
 
       let googleMap = new Cesium.UrlTemplateImageryProvider({
-        url: "http://www.google.com/maps/vt?lyrs=s@716&x={x}&y={y}&z={z}"
+        url:
+          "http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=bd96aab09344f58b621b33a173233e8b"
       });
 
       imageryLayers.addImageryProvider(googleMap);
