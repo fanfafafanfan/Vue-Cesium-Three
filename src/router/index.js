@@ -51,6 +51,24 @@ const routes = [
         component: () =>
           import("../views/xeokitDemo/loading_XKT_MAP_pointCloud.vue")
       },
+      // xeokit-sdk 加载 模型 右键有操作面板
+      {
+        path: "/ContextMenu_Canvas_TreeViewPlugin_Custom",
+        name: "ContextMenu_Canvas_TreeViewPlugin_Custom",
+        component: () =>
+          import(
+            "../views/xeokitDemo/ContextMenu_Canvas_TreeViewPlugin_Custom.vue"
+          )
+      },
+      // xeokit-sdk 加载 模型 相机自动移动
+      {
+        path: "/performance_ViewCullPlugin_CameraPathAnimation",
+        name: "performance_ViewCullPlugin_CameraPathAnimation",
+        component: () =>
+          import(
+            "../views/xeokitDemo/performance_ViewCullPlugin_CameraPathAnimation.vue"
+          )
+      },
       // d3preview示例
       {
         path: "/d3previewIndex",

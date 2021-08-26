@@ -109,92 +109,12 @@ export default {
       inputName: "",
       tableData: [
         {
-          id: "93a4c9d5-3785-4aa5-8b79-2d9ca0aedceb",
-          projectName: "线路工程1",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: "7c99cff4-c632-4c7c-8d59-44457f212e60",
-          projectName: "变电工程",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
           id: "1f3188e7-f2ba-4bee-80ff-cbfa4ef1ae12",
           projectName: "500kV南章Ⅰ线",
           imageData: true,
           elevationData: true,
           obliquePhotographicData: true,
           thematicData: true,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 4,
-          projectName: "线路4",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 5,
-          projectName: "线路5",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 6,
-          projectName: "线路6",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: true,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 7,
-          projectName: "线路7",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 8,
-          projectName: "线路8",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: true,
-          documentation: "",
-          createTime: "2021-7-26 15:10"
-        },
-        {
-          id: 9,
-          projectName: "线路9",
-          imageData: true,
-          elevationData: true,
-          obliquePhotographicData: true,
-          thematicData: false,
           documentation: "",
           createTime: "2021-7-26 15:10"
         }

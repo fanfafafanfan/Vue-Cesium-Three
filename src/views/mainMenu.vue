@@ -1,7 +1,7 @@
 <template>
   <div id="project-menu">
     <el-header>
-      <div class="title">输电线路三维全过程机械化施工策划平台</div>
+      <div class="title">三维展现演示平台</div>
       <el-menu
         :default-active="activeMenu"
         class="el-menu-demo"
@@ -23,14 +23,20 @@
           <el-menu-item index="/loading_XKT_MAP_pointCloud"
             >XKT_MAP_pointCloud</el-menu-item
           >
+          <el-menu-item index="/ContextMenu_Canvas_TreeViewPlugin_Custom"
+            >ContextMenu_Canvas_TreeViewPlugin_Custom</el-menu-item
+          >
+          <el-menu-item index="/performance_ViewCullPlugin_CameraPathAnimation"
+            >performance_ViewCullPlugin_CameraPathAnimation</el-menu-item
+          >
         </el-submenu>
-        <el-menu-item>
+        <!-- <el-menu-item>
           <a
             href="http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earthui-fromJSON.html"
             target="_blank"
             >CesiumLab
           </a>
-        </el-menu-item>
+        </el-menu-item> -->
         <el-menu-item index="/d3previewIndex">d3preview示例</el-menu-item>
       </el-menu>
     </el-header>

@@ -65,14 +65,14 @@ export default {
 
       const xktLoader = new XKTLoaderPlugin(viewer);
 
-      const model = xktLoader.load({
+      this.model = xktLoader.load({
         id: "myModel",
         src: "/models/xkt/v7/MAP-PointCloud/MAP-PointCloud.xkt",
         edges: true
       });
 
-      model.on("loaded", () => {
-        console.log(model.numEntities);
+      this.model.on("loaded", () => {
+        console.log(this.model.numEntities);
       });
     }
   }
