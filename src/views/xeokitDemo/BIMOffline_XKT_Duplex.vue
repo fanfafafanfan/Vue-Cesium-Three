@@ -156,7 +156,7 @@ export default {
 
 #treeViewContainer {
   pointer-events: all;
-  height: 80%;
+  height: 75%;
   overflow-y: scroll;
   overflow-x: auto;
   position: absolute;

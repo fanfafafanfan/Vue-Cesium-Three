@@ -88,6 +88,7 @@ export default {
   },
   mounted() {
     console.log(window.location.href, "window.location.href");
+    this.clickModel();
   },
   destroyed() {},
   methods: {
@@ -196,7 +197,7 @@ export default {
       var pintest = "";
       var img = new Image();
       img.crossOrigin = "anonymous";
-      img.src = "http://localhost:8080/111.jpg";
+      img.src = "http://localhost:8080/images/111.jpg";
       img.onload = function() {
         // 通过arc来绘制一个圆形区域
         ctx.arc(150, 150, 60, 0, 2 * Math.PI);
@@ -274,7 +275,7 @@ export default {
         //   console.log("杆塔", pick.tileset.id);
         //   var markerEntity = window.viewer.entities.getById(pick.tileset.id);
         //   markerEntity._billboard._image._value =
-        //     "http://localhost:8080/tower-top-on.png";
+        //     "http://localhost:8080/images/tower-top-on.png";
         //   markerEntity._label._fillColor._value = Cesium.Color.fromCssColorString(
         //     "#35d9a1"
         //   );

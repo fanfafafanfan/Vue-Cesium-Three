@@ -122,7 +122,7 @@ export default {
     };
   },
   mounted() {
-    this.getLoginInfo();
+    // this.getLoginInfo();
   },
   methods: {
     async getLoginInfo() {

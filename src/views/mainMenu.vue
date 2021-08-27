@@ -14,22 +14,7 @@
       >
         <el-menu-item index="/projectManagement">项目管理</el-menu-item>
         <el-menu-item index="/modelsManagement">模型管理</el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">xeokit-sdk</template>
-          <el-menu-item index="/loadingObjCar">Obj-Car</el-menu-item>
-          <el-menu-item index="/BIMOffline_XKT_Duplex"
-            >BIMOffline_XKT_Duplex</el-menu-item
-          >
-          <el-menu-item index="/loading_XKT_MAP_pointCloud"
-            >XKT_MAP_pointCloud</el-menu-item
-          >
-          <el-menu-item index="/ContextMenu_Canvas_TreeViewPlugin_Custom"
-            >ContextMenu_Canvas_TreeViewPlugin_Custom</el-menu-item
-          >
-          <el-menu-item index="/performance_ViewCullPlugin_CameraPathAnimation"
-            >performance_ViewCullPlugin_CameraPathAnimation</el-menu-item
-          >
-        </el-submenu>
+        <el-menu-item index="/xeokitIndex">xeokit-sdk示例</el-menu-item>
         <!-- <el-menu-item>
           <a
             href="http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earthui-fromJSON.html"
@@ -38,6 +23,7 @@
           </a>
         </el-menu-item> -->
         <el-menu-item index="/d3previewIndex">d3preview示例</el-menu-item>
+        <el-menu-item index="/ue4Player">ue4像素流送</el-menu-item>
       </el-menu>
     </el-header>
     <div class="main">

@@ -27,74 +27,40 @@ export default {
     return {
       data: [
         {
-          label: "物料运输机械",
+          label: "静态模型",
           children: [
             {
-              label: "货运架空索道",
-              children: [
-                {
-                  label: "货运支架",
-                  path: "huoyunzhijia.FBX"
-                },
-                {
-                  label: "liaodou",
-                  path: "liaodou.FBX"
-                }
-              ]
+              label: "货运支架",
+              path: "huoyunzhijia.FBX"
             },
             {
-              label: "直升机物料吊运工具",
-              children: [
-                {
-                  label: "起重吊装带",
-                  path: "qizhongdiaozhaungdai.FBX"
-                }
-              ]
+              label: "liaodou",
+              path: "liaodou.FBX"
             },
+            {
+              label: "起重吊装带",
+              path: "qizhongdiaozhaungdai.FBX"
+            }
+          ]
+        },
+        {
+          label: "动态模型",
+          children: [
             {
               label: "履带式运输车",
-              children: [
-                {
-                  label: "WLD-10",
-                  path: "lvdaishiyunshuche-WLD-10.FBX"
-                }
-              ]
+              path: "lvdaishiyunshuche-WLD-10.FBX"
             },
-            // {
-            //   label: "轻型卡车",
-            //   children: [
-            //     {
-            //       label: "WQK-34",
-            //       path: "qingxingkache-WQK-34.FBX"
-            //     }
-            //   ]
-            // },
             {
               label: "轮胎式运输车",
-              children: [
-                {
-                  label: "WLT-15",
-                  path: "luntaishiyunshuche-WLT-15.FBX"
-                }
-              ]
+              path: "luntaishiyunshuche-WLT-15.FBX"
             },
             {
-              label: "水陆两用运输装备",
-              children: [
-                {
-                  label: "WSL-CA-7",
-                  path: "shuiluliangyongchuan-WSL-CA-7.FBX"
-                }
-              ]
+              label: "水陆两用运输设备",
+              path: "shuiluliangyongchuan-WSL-CA-7.FBX"
             },
             {
               label: "沼泽钢轮车",
-              children: [
-                {
-                  label: "WGL-5",
-                  path: "zhaozeganglunche-WGL-5.FBX"
-                }
-              ]
+              path: "zhaozeganglunche-WGL-5.FBX"
             }
           ]
         }
@@ -107,7 +73,7 @@ export default {
     };
   },
   created() {
-    this.path = "models/fbx/lvdaishiyunshuche-WLD-10.FBX";
+    this.path = "models/fbx/huoyunzhijia.FBX";
   },
   methods: {
     handleNodeClick(data) {
