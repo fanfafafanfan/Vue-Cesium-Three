@@ -62,10 +62,11 @@
 </template>
 
 <script>
-import { load } from "../UE4Player/app";
+import { load, onParagonLoad } from "../UE4Player/app";
 export default {
   mounted() {
     load();
+    onParagonLoad();
   }
 };
 </script>
